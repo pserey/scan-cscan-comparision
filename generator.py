@@ -1,11 +1,12 @@
-# generates a file with 10000 different integers
+# generates a file with 1000 different integers
 
 import random
 
-numbers = set()
-while len(numbers) < 10000:
-    numbers.add(random.randint(0, 1000000))
+def generate(number_set):
+    numbers = set()
+    while len(numbers) < number_set:
+        numbers.add(random.randint(0, number_set * 10))
 
-with open("requests.txt", "w") as f:
-    for num in numbers:
-        f.write(str(num) + "\n")
+    with open("requests.txt", "w") as f:
+        for num in numbers:
+            f.write(str(num) + "\n")
