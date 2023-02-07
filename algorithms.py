@@ -51,8 +51,17 @@ def CSCAN(requests, start_position):
     return path
 
 
-def run(requests):
-    start_position = random.randint(0, len(requests) - 1)
+def run(requests, sp):
+    match sp:
+        case 'a':
+            # randomly in all the length of the list
+            start_position = random.randint(0, len(requests) - 1)
+        case 'sh':
+            # randomly in the last half of the list
+            start_position = random.randint(len(requests) // 2, len(requests) - 1)
+        case 'fh':
+            # randomly in the first half of the list
+            start_position = random.randint(0, len(requests) // 2)
 
     before = datetime.now().timestamp()
     SCAN(requests, start_position)

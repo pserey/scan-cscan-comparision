@@ -1,6 +1,7 @@
 import time
 import pandas as pd
 import random
+import sys
 
 import matplotlib.pyplot as plt
 from algorithms import CSCAN, SCAN, run
@@ -24,7 +25,7 @@ def cscan(requests, position):
 def compare_algorithms(inputs):
     results = []
     for requests in inputs:
-        results.append(run(requests))
+        results.append(run(requests, sys.argv[1]))
         # time_scan = scan(requests, start_position)
         # time_cscan = cscan(requests, start_position)
         # results.append({'requests': requests, 'start_position': start_position,
@@ -37,7 +38,7 @@ def plot_results(results):
     max_scan_time = df['scan_time'].max()
     max_cscan_time = df['cscan_time'].max()
     max_time = max(max_scan_time, max_cscan_time)
-    window_size = 100  # Define the size of the moving average window
+    window_size = 500  # Define the size of the moving average window
     scan_moving_average = df['scan_time'].rolling(window=window_size, min_periods=1).mean()
     cscan_moving_average = df['cscan_time'].rolling(window=window_size, min_periods=1).mean()
     fig, ax1 = plt.subplots()
