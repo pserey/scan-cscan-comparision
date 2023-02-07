@@ -102,7 +102,7 @@ def random_start_position_element(requests):
 def generate_inputs():
     inputs = []
 
-    for i in range(1, 1000):
+    for i in range(1, 100):
         requests = generate_requests(10*i)
         # start_element = random_start_position_element(requests)
 
