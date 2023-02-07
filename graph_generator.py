@@ -38,7 +38,7 @@ def plot_results(results):
     max_scan_time = df['scan_time'].max()
     max_cscan_time = df['cscan_time'].max()
     max_time = max(max_scan_time, max_cscan_time)
-    window_size = 500  # Define the size of the moving average window
+    window_size = 1000  # Define the size of the moving average window
     scan_moving_average = df['scan_time'].rolling(window=window_size, min_periods=1).mean()
     cscan_moving_average = df['cscan_time'].rolling(window=window_size, min_periods=1).mean()
     fig, ax1 = plt.subplots()
@@ -103,7 +103,7 @@ def random_start_position_element(requests):
 def generate_inputs():
     inputs = []
 
-    for i in range(1, 100):
+    for i in range(1, 500):
         requests = generate_requests(10*i)
         # start_element = random_start_position_element(requests)
 
