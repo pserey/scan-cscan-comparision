@@ -74,7 +74,14 @@ def run(requests, sp):
     # print(f'\nCSCAN time: {datetime.now() - before}')
 
     return {'requests': requests, 'start_position': start_position,
-     'scan_time': scan_time, 'cscan_time': cscan_time}
+     'scan_time': scan_time, 'cscan_time': cscan_time, 'percent_increase': difference(cscan_time, scan_time)}
+
+# calculate percentage increase/decrease between time1 and time2
+def difference(time_1, time_2):
+    percentage_increase = ((time_2 - time_1) * 100) / time_1
+
+    return percentage_increase
+    
 
 # print(run())
 

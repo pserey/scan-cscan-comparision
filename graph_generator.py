@@ -113,13 +113,25 @@ def generate_inputs():
     return inputs
 
 
+def calc_avg_increase(results):
+    sum = 0
+
+    for r in results:
+        sum += r['percent_increase']
+
+    return sum / len(results)
+
+
+
 
 inputs = generate_inputs()
 # results = compare_algorithms(inputs, scan, cscan)
 results = compare_algorithms(inputs)
+avg_increase = calc_avg_increase(results)
 # for e in results:
 #     if e['scan_time'] < e['cscan_time']: print('x')
 #     else: print('.')
 # for r in results:
 #     print(r)
+print(avg_increase)
 plot_results(results)
